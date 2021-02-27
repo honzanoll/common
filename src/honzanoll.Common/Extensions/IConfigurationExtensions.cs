@@ -8,18 +8,8 @@ namespace honzanoll.Common.Extensions
 
         public static string GetAppSettingsFileRelativePath()
         {
-#if DEV
-            return "appsettings.Dev.json";
-
-#elif TEST
-            return "appsettings.Test.json";
-
-#elif PROD
-            return "appsettings.Prod.json";
-
-#elif DEBUG
-            return "appsettings.Development.json";
-
+#if DEBUG
+            return "appsettings.localhost.json";
 #else
             return "appsettings.json";
 #endif
@@ -32,18 +22,8 @@ namespace honzanoll.Common.Extensions
 
         public static string GetConfigurationName()
         {
-#if DEV
-            return "Dev";
-
-#elif TEST
-            return "Test";
-
-#elif PROD
-            return "Prod";
-
-#elif DEBUG
+#if DEBUG
             return "Debug";
-
 #else
             return "Unknown";
 #endif
