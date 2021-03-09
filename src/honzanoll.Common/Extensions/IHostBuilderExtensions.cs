@@ -19,6 +19,9 @@ namespace honzanoll.Common.Extensions
 
                 configurationBuilder.SetBasePath(webHostBuilderContext.HostingEnvironment.ContentRootPath);
                 configurationBuilder.AddJsonFile(IConfigurationExtensions.GetAppSettingsFileRelativePath(), false, true);
+                configurationBuilder.AddJsonFile("appsettings.extra.json", true, false);
+
+                configurationBuilder.AddEnvironmentVariables();
             });
         }
 
@@ -30,6 +33,7 @@ namespace honzanoll.Common.Extensions
 
                 configurationBuilder.SetBasePath(webHostBuilderContext.HostingEnvironment.ContentRootPath);
                 configurationBuilder.AddJsonFile(IConfigurationExtensions.GetAppSettingsFileRelativePath(webHostBuilderContext.HostingEnvironment), false, true);
+                configurationBuilder.AddJsonFile("appsettings.extra.json", true, false);
 
                 configurationBuilder.AddEnvironmentVariables();
             });
@@ -41,6 +45,7 @@ namespace honzanoll.Common.Extensions
             {
                 configurationBuilder.SetBasePath(webHostBuilderContext.HostingEnvironment.ContentRootPath);
                 configurationBuilder.AddJsonFile(getAppSettingsFileRelativePath(), false, false);
+                configurationBuilder.AddJsonFile("appsettings.extra.json", true, false);
             });
         }
 
@@ -52,6 +57,8 @@ namespace honzanoll.Common.Extensions
 
                 configurationBuilder.SetBasePath(Directory.GetCurrentDirectory());
                 configurationBuilder.AddJsonFile(appSettingsFileRelativePath, false, true);
+
+                configurationBuilder.AddEnvironmentVariables();
             });
 
             return hostBuilder;
